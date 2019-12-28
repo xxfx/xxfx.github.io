@@ -1,1 +1,98 @@
-利用404我们可以获得永久链接。
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>先行者先知 - 寄生于 Github Page 的多功能网站</title>
+<!-- 最新版本的 Bootstrap 核心 CSS 文件 -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+<!-- 可选的 Bootstrap 主题文件（一般不用引入） -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+    <!-- jQuery (Bootstrap 的所有 JavaScript 插件都依赖 jQuery，所以必须放在前边) -->
+    <script src="https://cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+
+<body>
+<div id="sss">
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">先行者先知</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">先行者先知</a>
+        </div>
+        <div id="navbar" class="collapse navbar-collapse">
+          <ul class="nav navbar-nav">
+            <li><a href="/">首页</a></li>
+            <li><a href="/music?a=1&b=2#MyMusc=this&YouMusic=today">音乐</a></li>
+            <li><a href="/video?a=1&b=2#MyMusc=this&YouMusic=today">视频</a></li>
+			<li><a href="/bbs?a=1&b=2#MyMusc=this&YouMusic=today">论坛</a></li>
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </nav>
+<header>头部信息</header>
+
+    <div class="container">
+
+      <div class="starter-template">
+        <h1><br />404</h1>
+        <p class="lead">通过404页面我们可以获取到永久链接</p>
+		<p id="url" class="lead"></p>
+		<p class="lead">然后根据URL参数来请求具体内容并显示</p>
+		<p id="url2" class="lead"></p>
+		<p id="url5" class="lead">{{pathname}}</p>
+		<p id="url3" class="lead"></p>
+		<p id="url4" class="lead"></p>
+			
+		
+      </div>
+
+    </div><!-- /.container -->
+<footer>底部版权</footer>
+</div>
+<!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+<script type="text/javascript">
+	//设置菜单激活样式
+	$(".navbar-nav li").each(function(i){
+		var a = document.createElement('a');
+		a.href = $('.navbar-nav li a').eq(i).attr("href");
+
+		console.log(a.pathname);
+		if(a.pathname==window.location.pathname){
+		$('.navbar-nav li').eq(i).addClass('active');
+		}
+	});
+				$("#url").html(document.URL);
+				$("#url2").html(window.location.pathname);
+				$("#url3").html(window.location.search);
+				$("#url4").html(window.location.hash);
+				var v=new Vue({
+					el:'#sss',
+				data:{
+					
+					pathname:window.location.pathname,
+					},methods : {
+  active: function (a) {
+    return {
+      active: this.pathname==a,
+
+    }
+  }
+}
+				});
+				
+				
+
+			</script>
+</body>
+</html>
